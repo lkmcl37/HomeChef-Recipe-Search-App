@@ -1,0 +1,325 @@
+
+<!--@author: KaMan Leong-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>HomeChef</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+<link href="{{url_for('static', filename='css/style.css')}}" type="text/css" rel="stylesheet" media="all">
+
+<link rel="stylesheet" href="{{url_for('static', filename='css/flexslider.css')}}" type="text/css" media="screen" />
+
+    <link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap-theme.min.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script type = "text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/corejs-typeahead/1.1.1/typeahead.bundle.js"></script>
+
+<!-- //Custom Theme files -->
+<!-- js -->
+<script src="js/jquery-1.11.1.min.js"></script>
+<!-- //js -->
+<!-- web-fonts -->
+<link href='//fonts.googleapis.com/css?family=Buda:300' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Roboto+Condensed:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
+<!-- //web-fonts -->
+<!-- start-smooth-scrolling -->
+
+<script type="text/javascript" src="{{url_for('static', filename='js/move-top.js')}}"></script>
+<script type="text/javascript" src="{{url_for('static', filename='js/easing.js')}}"></script>
+<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$(".scroll").click(function(event){
+				event.preventDefault();
+
+		$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+			});
+		});
+</script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script type = "text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/corejs-typeahead/1.1.1/typeahead.bundle.js"></script>
+
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+	<link rel="stylesheet" href="{{url_for('static', filename='src/jquery.typeahead.css')}}">
+    <script src="{{url_for('static', filename='src/jquery.typeahead.js')}}"></script>
+
+    <style>
+        .typeahead__suggestion-label {
+            position: center;
+            top: 4px;
+            right: 12px;
+            background: #ecf5fc;
+            border:solid 1px #66afe9;
+            padding: 3px;
+            border-radius: 5px;
+
+        }
+
+        .typeahead__clear-suggestions {
+            margin: 1rem 0;
+			float:left;
+            cursor: pointer;
+			border-radius:8px;
+        }
+
+		.container{
+    margin-top:30px;
+}
+
+		.filter-col{
+			padding-left:10px;
+			padding-right:10px;
+		}
+    </style>
+
+</style>
+</head>
+<body>
+	<!-- banner -->
+	<div class="banner">
+		<div class="banner-info">
+			<div class="banner-top">
+				<div class="container">
+					<div class="banner-top-grids banner-top-left">
+						<ul class="">
+							<li><a href="#"> </a></li>
+							<li><a href="#" class=""> </a></li>
+							<li><a href="#" class=""> </a></li>
+							<li><a href="#" class=""> </a></li>
+						</ul>
+					</div>
+					<div class="banner-top-grids banner-logo">
+							<img src="{{url_for('static', filename='1.png')}}" width="90" height="90" alt=""/>
+							<h1>HomeChef <span> Recipe Finder</span></h1>
+					</div>
+					<div class="banner-top-grids banner-top-right">
+						<p><span class=""></span>  </p>
+					</div>
+					<div class="banner-top-grids banner-top-right">
+						<p><span class=""></span>  </p>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="banner-text" style="width: 80%; max-width: 600px; margin: 0 auto;">
+				   <form class="" role="form" action="results" method="post">
+						<div class="typeahead__container">
+							<div class="typeahead__field">
+							<span class="typeahead__query">
+								<input class="js-typeahead"
+									   name="inputValue"
+									   placeholder="search a recipe"
+									   autofocus
+									   autocomplete="off">
+
+							</span>
+							<span class="typeahead__button">
+								<button type="submit">
+									<span class="typeahead__search-icon"></span>
+								</button>
+
+							</span>
+
+							</div>
+						</div>
+					</form>
+	<button type="button"
+            class="typeahead__clear-suggestions"
+            onclick="clearSuggestions();">
+        Clear Suggestions
+    </button>
+
+</div>
+
+	<script>
+
+		var data = ["beef", "potato", "tomato", "creamy", "peach", "pie", "cake", "mix", "butter", "eggs", "light", "peach", "slices", "cream", "cheese", "sugar", "vanilla", "extract", "dry", "rub", "pork", "shoulder", "paprika", "black", "pepper", "garlic", "powder", "onion", "powder", "cayenne", "pepper", "kosher", "salt", "brown", "sugar", "brunsviger", "sauce", "brun", "farin", "m\u00f8rk", "sirup", "melasse", "vanillestang", "salt", "fl\u00f8de", "sm\u00f8r", "baked", "crab", "rangoon", "garlic", "salt", "worcestershire", "sauce", "ton", "wrappers", "green", "onion", "imitation", "crab", "cream", "cheese", "kfc", "original", "recipe", "fried", "chicken", "crisco", "cooking", "oil", "beaten", "milk", "purpose", "flour", "salt", "black", "pepper", "accent", "flavor", "enhancer", "boneless", "chicken", "breasts", "leilas", "rocky", "road", "m\u00f6rk", "kvalitetschoklad", "70", "%", "dumlekola", "mini", "marshmallows", "salta", "jordn\u00f6tter", "skalade", "pistagen\u00f6tter", "crispy", "cheddar", "chicken", "boneless", "chicken", "breasts", "ritz", "crackers", "salt", "black", "pepper", "whole", "milk", "cheddar", "cheese", "dried", "parsley", "cream", "chicken", "soup", "sour", "cream", "butter", "flank", "steak", "sandwiches", "sandwiches", "flank", "steak", "sourdough", "rolls", "jack", "cheese", "marinade", "olive", "oil", "red", "wine", "vinegar", "lime", "juice", "onion", "sugar", "oregano", "garlic", "salt", "guacamole", "avocados", "lemon", "juice", "salt", "tabasco", "tomatoes", "onion", "cilantro", "teriyaki", "chicken", "soy", "sauce","sherry", "vegetable", "oil", "brown", "sugar", "fresh", "ginger", "boneless", "chicken", "breast", "halves", "optional", "garnish", "sesame", "seeds", "scallions", "chokladtryffelkaka", "kakao", "vaniljsocker","dorito", "chicken", "cheese", "casserole", "rotisserie", "chicken", "sour", "cream", "cream", "chicken", "soup", "corn", "cheddar", "cheese", "salt", "black", "pepper", "garlic", "powder", "nacho", "cheese", "doritos"];
+
+
+        var storageKey = 'TYPEAHEAD_SUGGESTIONS',
+            storageData = JSON.parse(localStorage.getItem(storageKey)) || [];
+
+        function clearSuggestions () {
+            localStorage.removeItem(storageKey);
+            storageData = [];
+        }
+
+        typeof $.typeahead === 'function' && $.typeahead({
+            input: ".js-typeahead",
+            minLength: 1,
+            maxItem: 8,
+            maxItemPerGroup: 6,
+            order: "asc",
+            hint: true,
+            searchOnFocus: true,
+            display: ["name", "city"],
+            emptyTemplate: 'no result for {{query}}',
+            source: {
+                suggestion: {
+                    template: "{{name}} {{city}} <small class='typeahead__suggestion-label'>Suggestion</small>",
+                    minLength: 0, // Start showing suggestion when the input is focused
+                    maxLength: 3, // when 4 characters are entered, the suggestions will stop showing
+                    dynamic: true,
+                    filter: false, // Always show these suggestion regardless of what is typed
+                    data: function () {
+                        var deferred = $.Deferred();
+
+                        // setTimeout simulates a delay if you are getting the data from
+                        // a call to an API or a backend endpoint to get the user's preferences
+                        setTimeout(function () {
+
+                            deferred.resolve(storageData);
+
+                        }, 250);
+
+                        return deferred;
+                    }
+                },
+                teams: {
+                    data: data,
+                    matcher: function (item, displayKey) {
+                        var isSuggestion;
+                        for (var i = 0, ii = storageData.length; i < ii; ++i) {
+                            if (storageData[i].name === item.name) {
+                                isSuggestion = true;
+                                break;
+                            }
+                        }
+                        return isSuggestion ? undefined : true;
+
+                        // return undefined to skip to next item
+                        // return false to attempt the matching function on the next displayKey
+                        // return true to add the item to the result list
+                        // return item object to modify the item and add it to the result list
+                    }
+                }
+            },
+            callback: {
+                // onClick add the clicked item into the suggestion array inside localStorage
+                // or it could also send a request to store it in database so the user get its last searched terms
+                onClick: function (node, a, item, event) {
+                    var maxSuggestions = 3;
+
+                    if (storageData.length >= maxSuggestions) {
+                        storageData.pop();
+                    }
+                    storageData.unshift(item);
+
+                    localStorage.setItem(storageKey, JSON.stringify(storageData));
+                }
+            },
+            debug: true
+        });
+
+    </script>
+
+			<div class="main">
+				<div class="container">
+					<nav id="menu" class="nav top-nav">
+						<button  class="navtoogle">
+							<span class="icon-menu glyphicon glyphicon-menu-hamburger"> </span> Menu
+						</button>
+
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer
+		{% if result_num == 0 %}
+			<div class="alert alert-danger" role="alert">
+					<strong>Nothing is found! </strong> Change a few things up and try again.
+				</div>
+		{%endif%}
+
+
+		<body background="{{url_for('static', filename='images/overlay.png')}}">
+		<div class="container" >
+
+			{% for res in result %}
+			<div class="w3ls-row alert">
+				<div class="col-md-6 welcome-left">
+					<img src="{{res[3]}}" width="200" height="200" class="img-responsive" alt=""/>
+				</div>
+				<div class="col-md-6 welcome-right">
+					<h4> {{res[1]}} </h4>
+									<ul class="meta-search">
+					{% if res[5]%}
+					<li><i class="glyphicon glyphicon-tags"></i> <span>{{res[5]}}</span></li>
+				</ul>
+				{%endif%}
+					<p>{{res[2]}} </p>
+					<form name="mydetail" action="detail" method="post"><input name="inputDetail" type="hidden" value="{{ res[0] }}">
+					<button class="btn btn-primary" type="submit" >Read more</button>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			{% endfor %}
+	</body>
+		<div>
+			<ul class="pager">
+            <li class="previous">
+            <a href='javascript:my_submit("PPrev")'>Prev</a>
+            </li>
+            <li class="next">
+            <a href='javascript:my_submit("NNext")'>Next</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+		</div>
+			</div>
+			<div class="footer-bottom">
+				<p>@2017 Hao Wang, Ti Liang, KaMan Leong, All rights reserved</a></p>
+			</div>
+	</div>
+
+		  <form action="jump_prev" name="PPrev" id="PPrev" method="post">
+              <input type="hidden", value="Prev">
+
+          </form>
+          <form action="jump_next" name="NNext" id="NNext" method="post">
+              <input type="hidden", value="Next">
+
+            </form>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+			var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear'
+			};
+			*/
+
+			$().UItoTop({ easingType: 'easeOutQuart' });
+
+		});
+
+
+function my_submit(input_id)
+{
+    document.getElementById(input_id).submit();
+
+    // alert(input_id);
+
+}
+
+	</script>
+	<!-- //smooth-scrolling-of-move-up -->
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{{url_for('static', filename='js/bootstrap.js')}}"></script>
+</body>
+</html>
