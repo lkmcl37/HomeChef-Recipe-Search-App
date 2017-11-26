@@ -1,9 +1,3 @@
-'''
-Created on Apr 30, 2017
-
-@author: Hao Wang
-'''
-
 import urllib2
 import json
 import traceback
