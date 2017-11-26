@@ -1,8 +1,3 @@
-'''
-Created on Apr 30, 2017
-
-@author: Ti Liang, Hao Wang
-'''
 import shelve
 import numpy as np
 from datetime import datetime
