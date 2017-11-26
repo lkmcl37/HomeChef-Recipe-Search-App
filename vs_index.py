@@ -1,8 +1,3 @@
-'''
-Created on Apr 30, 2017
-
-@author: Ti Liang, KaMan Leong, Hao Wang
-'''
 from elasticsearch import Elasticsearch
 from elasticsearch import helpers
 import numpy as np
