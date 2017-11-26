@@ -1,9 +1,3 @@
-'''
-Created on Apr 30, 2017
-
-@author: KaMan Leong, Ti Liang
-'''
-
 #This module is for web interative
 from flask import *
 from ES import *
